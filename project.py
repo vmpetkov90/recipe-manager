@@ -69,6 +69,24 @@ def view_recipe():
     else:
         print('The cook book is empty')
 
+# Search for a recipe 
+def search_recipe():
+    if len(cook_book) > 0:
+        match = False
+        while True:
+            query = input('Enter what you are searching for: ')
+            if len(query) > 0:
+                break
+        for recipe in cook_book:
+            if ( query.lower() in recipe['title'].lower()
+                or any(query.lower() in ingredient.lower() for ingredient in recipe['ingredients'])):
+                match = True
+                print(recipe['title'].capitalize())
+        if not match:
+            print('Nothing found')
+    else:
+        print('The cook book is empty.')
+
 # Variable to store recipes
 cook_book = open_file()
 
@@ -92,6 +110,9 @@ while True:
         view_all_recipes()
     elif option == '2':
         view_recipe()
+    elif option == '3':
+        search_recipe()
+
     while True:
         another_action = input('\nWould you like to perform another action? (yes/no): ')
         if another_action == 'no':
