@@ -39,6 +39,41 @@ def update_file(message):
     except:
         print('Something went wrong. Please try again')
 
+# View all recipes
+def view_all_recipes():
+    if len(cook_book) > 0:
+        for recipe in cook_book:
+            print(recipe['title'].capitalize())
+    else:
+        print('The cook book is empty.')
+
 # Variable to store recipes
 cook_book = open_file()
 
+# Variable to stop the main program
+stop = False
+
+# Main program
+while True:
+    print('\nPlease, choose one of the following options:\n')
+    print('1. View all recipes.')
+    print('2. View a recipe')
+    print('3. Search for a recipe by title or ingredients')
+    print('4. Add a new recipe.')
+    print('5. Edit a recipe')
+    print('6. Delete a recipe\n')
+    while True:
+        option = input('Please select the number of the choosen option: ')
+        if option in ['1','2','3','4','5','6']:
+            break
+    if option == '1':
+        view_all_recipes()
+    while True:
+        another_action = input('\nWould you like to perform another action? (yes/no): ')
+        if another_action == 'no':
+            stop = True
+            break
+        elif another_action == 'yes':
+            break
+    if stop:
+        break
