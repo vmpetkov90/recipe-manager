@@ -124,6 +124,63 @@ def search_recipe():
     else:
         print('The cook book is empty.')
 
+# Edit a recipe
+def edit_recipe():
+    if len(cook_book) > 0:
+        match = False
+        updated = False
+        while True:
+            recipe_to_edit = input('Which recipe would you like to edit?: ')
+            if len(recipe_to_edit) > 0:
+                break
+        for recipe in cook_book:
+            if recipe_to_edit.lower() == recipe['title'].lower():
+                match = True
+                print(f'Current title: "{recipe['title'].capitalize()}"')
+                new_title = ''
+                while len(new_title) < 1:
+                    new_title = input('Enter new title (leave blank if you want to keep the same title): ')
+                    if len(new_title) > 0:
+                        recipe['title'] = new_title
+                        updated = True
+                    else:
+                        break
+                print('Enter the ingredient you want to remove or add (leave blank when done): ')
+                while True:
+                    print('Current ingredients:')
+                    for index, ingredient in enumerate(recipe['ingredients'], start=1):
+                        print(f'{index}. {ingredient.capitalize()}')
+                    new_ingredient = input('Ingredient: ')
+                    if len(new_ingredient) > 0:
+                        if new_ingredient.lower() in recipe['ingredients']:
+                            recipe['ingredients'].remove(new_ingredient)
+                        else:
+                            recipe['ingredients'].append(new_ingredient)
+                        updated = True 
+                    else:
+                        break
+                print('Enter the instruction you want to remove or add (leave blank when done): ')
+                while True:
+                    print('Current instructions:')
+                    for index, instruction in enumerate(recipe['instructions'], start=1):
+                        print(f'{index}. {instruction.capitalize()}')
+                    new_instruction = input('Instruction: ')
+                    if len(new_instruction) > 0:
+                        if new_instruction.lower() in recipe['instructions']:
+                            recipe['instructions'].remove(new_instruction)
+                        else:
+                            recipe['instructions'].append(new_instruction) 
+                        updated = True
+                    else:
+                        break
+                if updated:
+                    message = f'"{new_title.capitalize() if len(new_title) > 0 else recipe['title'].capitalize()}" was successfully updated'
+                    update_file(message)
+        if not match:
+            print('This recipe is not in our cook book.')
+    else:
+        print('The cook book is empty.')
+
 # Variable to store recipes
 cook_book = open_file()
 
@@ -151,6 +208,8 @@ while True:
         search_recipe()
     elif option == '4':
         add_new_recipe()
+    elif option == '5':
+        edit_recipe()
 
     while True:
         another_action = input('\nWould you like to perform another action? (yes/no): ')
