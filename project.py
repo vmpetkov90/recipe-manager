@@ -68,6 +68,43 @@ def view_recipe():
             print('This recipe is not in our cook book.')
     else:
         print('The cook book is empty')
+        
+# Add a new recipe
+def add_new_recipe():
+    while True:
+        match = False
+        title = input('Add a recipe title: ')
+        for recipe in cook_book:
+            if title.lower() == recipe['title']:
+                match = True     
+        if not match and len(title) > 0:
+            break
+        elif match :
+            print('This recipe is already in the cook book.')
+    print('Add ingredients (leave blank when done).')
+    ingredients_list = []
+    while True:
+        ingredient = input(f'Ingredient №{len(ingredients_list)+1}: ')
+        if len(ingredient) > 0:
+            ingredients_list.append(ingredient.lower())
+        elif len(ingredient) == 0 and len(ingredients_list) > 0:
+            break
+    print('Add instructions (leave blank when done).')
+    instructions_list = []
+    while True:
+        instructions = input(f'Instruction №{len(instructions_list)+1}: ')
+        if len(instructions) > 0:
+            instructions_list.append(instructions.lower())
+        elif len(instructions) == 0 and len(instructions_list) > 0:
+            break
+    recipe={
+        'title':title.lower(),
+        'ingredients': ingredients_list,
+        'instructions': instructions_list
+    }
+    cook_book.append(recipe)
+    message = f'"{title.capitalize()}" was successfully added to the recipe book'
+    update_file(message)
 
 # Search for a recipe 
 def search_recipe():
@@ -112,6 +149,8 @@ while True:
         view_recipe()
     elif option == '3':
         search_recipe()
+    elif option == '4':
+        add_new_recipe()
 
     while True:
         another_action = input('\nWould you like to perform another action? (yes/no): ')
