@@ -123,6 +123,25 @@ def search_recipe():
             print('Nothing found')
     else:
         print('The cook book is empty.')
+        
+# Delete a recipe
+def delete_recipe():
+    match = False
+    if len(cook_book) > 0:
+        while True:
+            recipe_to_delete = input('Which recipe would you like to delete?: ')
+            if len(recipe_to_delete) > 0:
+                break
+        for recipe in cook_book:
+            if recipe['title'] == recipe_to_delete.lower():
+                match = True
+                cook_book.remove(recipe)
+                message = f'"{recipe_to_delete.capitalize()}" was successfully removed from the recipe book'
+                update_file(message)
+        if not match:
+            print('This recipe is not in our cook book.')
+    else:
+        print('The cook book is empty')
 
 # Edit a recipe
 def edit_recipe():
@@ -210,7 +229,8 @@ while True:
         add_new_recipe()
     elif option == '5':
         edit_recipe()
-
+    elif option == '6':  
+        delete_recipe()
     while True:
         another_action = input('\nWould you like to perform another action? (yes/no): ')
         if another_action == 'no':
