@@ -47,6 +47,28 @@ def view_all_recipes():
     else:
         print('The cook book is empty.')
 
+# View a specific recipe
+def view_recipe():
+    match = False
+    if len(cook_book) > 0:
+        while True:
+            recipe_to_view = input('Which recipe would you like to view?: ')
+            if len(recipe_to_view) > 0:
+                break
+        for recipe in cook_book:
+            if recipe['title'] == recipe_to_view.lower():
+                match = True
+                print('Ingredients:')
+                for index, ingredient in enumerate(recipe['ingredients'], start=1):
+                    print(f'{index}. {ingredient}')
+                print('Instructions:')
+                for index, instruction in enumerate(recipe['instructions'], start=1):
+                    print(f'{index}. {instruction}')
+        if match == False:
+            print('This recipe is not in our cook book.')
+    else:
+        print('The cook book is empty')
+
 # Variable to store recipes
 cook_book = open_file()
 
@@ -68,6 +90,8 @@ while True:
             break
     if option == '1':
         view_all_recipes()
+    elif option == '2':
+        view_recipe()
     while True:
         another_action = input('\nWould you like to perform another action? (yes/no): ')
         if another_action == 'no':
