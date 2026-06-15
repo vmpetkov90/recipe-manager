@@ -4,10 +4,29 @@
 ![JSON](https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white)
 ![CLI](https://img.shields.io/badge/Interface-CLI-blue?style=for-the-badge)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/vmpetkov90/recipe-manager)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/your-username/recipe-manager)
 
 A simple, interactive **Recipe Manager** built in **Python**, designed to store, search, edit, and manage recipes directly from the command line.  
 All data is saved locally in a JSON file, making the app lightweight, portable, and easy to extend.
+
+---
+
+## 🚀 Run in GitHub Codespaces
+
+You can run this project instantly in the cloud using **GitHub Codespaces** — no installation required.
+
+When you click the Codespaces button above:
+
+1. GitHub creates a **new private Codespace** just for you  
+2. The project opens in a full **VS Code environment** in your browser  
+3. Python is already installed  
+4. You can run the program immediately:
+
+```
+python main.py
+```
+
+Each user gets their **own isolated environment**, so your repository stays clean and untouched.
 
 ---
 
@@ -54,12 +73,6 @@ Check your version:
 python --version
 ```
 
-or:
-
-```
-python3 --version
-```
-
 ---
 
 ### **2. Clone the repository**
@@ -80,12 +93,6 @@ cd recipe-manager
 
 ```
 python main.py
-```
-
-or:
-
-```
-python3 main.py
 ```
 
 ---
@@ -200,28 +207,6 @@ Tuna mayo rice bowl
 Cheesy quesadilla
 Garlic butter pasta
 ```
-
----
-
-## 🔮 Future Improvements
-
-- **Export & Import Recipes**  
-  Allow users to back up or load recipes from external JSON files.
-
-- **Sorting & Filtering**  
-  Sort recipes alphabetically or filter by ingredient count.
-
-- **Categories / Tags**  
-  Add recipe categories such as *breakfast*, *quick meals*, *vegetarian*, etc.
-
-- **Better Error Handling**  
-  More descriptive messages for invalid inputs or corrupted JSON files.
-
-- **Unit Tests**  
-  Add automated tests to ensure reliability as the project grows.
-
-- **Optional GUI Version**  
-  A simple Tkinter or web‑based interface for non‑CLI users.
 
 ---
 
